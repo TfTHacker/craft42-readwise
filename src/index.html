@@ -6,21 +6,20 @@
 </head>
 
 <body>
-  <img width="240px" style="margin-top:10px; margin-bottom: 10px;"
-    src="https://readwise-assets.s3.amazonaws.com/static/images/new_icons/logotype_logo.318c99bebf81.svg">
-  <div style="display:flex">
-    <span><button id="btn-execute" class="btn">Refresh highlight list</button></span>
-    <span id="btn-configure-readwise">
-      <img id="gear-image" title="Configure Readwise Token"
-        src="https://readwise-assets.s3.amazonaws.com/static/images/new_icons/account.5b1e4a8f6875.svg">
-    </span>
-  </div>
-  <div id="config-readwise-setings">
-    <div><br>Readwise Token:</div>
-    <input style="width:200px" id="readwise-api-key" type="text">
-    <div style="font-size:small">https://readwise.io/access_token</div>
-  </div>
-  <div id="book-list" style="overflow-x:hidden; overflow-y:auto;height:400px">
+  <div class="extension-header">Readwise Highlight Importer</div>
+  <div id="book-list" style="overflow-x:hidden; overflow-y:auto;height:450px"></div>
+    <div style="display:flex; margin-top: 10px;">
+      <span><button id="btn-execute" class="btn">Refresh highlight list</button></span>
+      <span id="btn-configure-readwise">
+        <img id="gear-image" title="Configure Readwise Token"
+          src="https://readwise-assets.s3.amazonaws.com/static/images/new_icons/account.5b1e4a8f6875.svg">
+      </span>
+    </div>
+    <div id="config-readwise-setings">
+      <div><br>Readwise Access Token:</div>
+      <input style="width:250px" id="readwise-api-key" type="text">
+      <div style="font-size:small">You can get your Readwise access token at this address https://readwise.io/access_token. On that page copy your token and paste it into the field above. Then click on the person icon to go to the primary view of this extension.</div>
+    </div>
 </body>
 
 </html>
