@@ -15,13 +15,32 @@ body.dark {
   border: none;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
+  display: none;
+  /* display: inline-block; */
   font-size: 14px;
   height: 30px;
   width: 180px;
   margin-bottom: 15px;
   border-radius: 6px;
   cursor: pointer;
+}
+
+#gear-image {
+  height: 20px;
+  padding-top: 5px;
+  padding-left: 10px;
+}
+
+#config-readwise-setings {
+  display: none;
+  margin-bottom: 20px;
+}
+
+#btn-configure-readwise {
+  filter: invert(0.9);
+}
+#btn-configure-readwise:hover {
+  filter: invert(0.50);
 }
 
 body.dark .btn {

@@ -4,7 +4,12 @@ export const readwiseGetBookList = async (rwToken : string) => {
             "Authorization": "Token " + rwToken
         }
     });
-    return await bookList.json();
+    // sort by date, newest to oldest
+    return (await bookList.json()).results.sort( (a:any,b:any)=>{
+        const c = new Date(a.last_highlight_at).getTime();
+        const d = new Date(b.last_highlight_at).getTime();
+        return d - c;
+    });
 }
 
 
