@@ -10,6 +10,10 @@ let divSettingsWrapper: HTMLDivElement;
 let lastBookListQuery: any;
 
 window.addEventListener("load", async () => {
+  await initializeUI();
+})
+
+const initializeUI = async ()=> {
   btnRefreshHighlightList = <HTMLButtonElement> document.getElementById('btn-execute');
   inputReadwiseApiToken = <HTMLInputElement> document.getElementById("readwise-api-key")
   bookListDiv = <HTMLDivElement> document.getElementById("book-list");
@@ -53,17 +57,15 @@ window.addEventListener("load", async () => {
     divSettingsWrapper.style.display = "inline";
     bookListDiv.style.height="0px";
   }
-
-})
+}
 
 const insertHighlights = async (id : string) => {
   const rwToken = await craft.storageApi.get("readwiseToken");
   const highlights =  await readwiseGetHighlightsByBookID(<string> rwToken.data, id);
   const bookInfo = lastBookListQuery.find((b:any)=> b.id.toString() === id );
   let output: CraftBlockInsert[] = [];
-
-  console.log(bookInfo)
-  if(bookInfo.title) output.push( { type: "textBlock",  content: bookInfo.title, style: { textStyle: "title"} } );
+  if(bookInfo.title) 
+    output.push( { type: "textBlock",  content: bookInfo.title, style: { textStyle: "title"} } );
 
   if(bookInfo.author) 
     output.push( { type: "textBlock",  content: [ { text: "Author:", isBold: true}, {text: " " + bookInfo.author}]} );
@@ -77,7 +79,6 @@ const insertHighlights = async (id : string) => {
 
   if(bookInfo.tags.length>0) 
       output.push( { type: "textBlock", content: [ { text: "Tags:", isBold: true}, {text: " " + bookInfo.tags.join(" ")}]} );
-             
 
   output.push( { type: "textBlock",  content: [ { text: "Import Date:", isBold: true}, {text: " " + (new Date()).toLocaleDateString() + " " + (new Date()).toLocaleTimeString() }]} );
 
@@ -99,7 +100,6 @@ const insertHighlights = async (id : string) => {
       })
     );
   });
-  console.log(output)
   craft.dataApi.addBlocks( output );
 }
 
@@ -113,10 +113,10 @@ const listBooks = async () => {
   }
   lastBookListQuery.forEach((e : any) => {
     if(e.num_highlights===0) return;
-    output += `<div class="ReadWiseBook"  style="padding-bottom:4px; width=250px; display: flex; border-top-style:dashed; border-top-width:1px; padding-top:5px">
-            <span><img class="book-images" src="${e.cover_image_url}" width="45px"></span>
-              <span style="width:170px;padding-left:5px"">
-                <div >${e.title} (${e.num_highlights})</div>
+    output += `<div class="readwise-book-container">
+            <span class="book-images-wrapper"><img class="book-images" src="${e.cover_image_url}"></span>
+              <span class="book-info">
+                <div>${e.title} (${e.num_highlights})</div>
                 <div>${e.author}</div>
               </span>
               <span><img class="btn-insert-highlights" id="${e.id}" src="https://readwise-assets.s3.amazonaws.com/static/images/new_icons/import.30df72e7b737.svg"></span>                 
