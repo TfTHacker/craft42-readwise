@@ -47,10 +47,28 @@ body.dark {
   font-weight: bold;
 }
 
+.book-images {
+  width:45px;
+  margin-left: 5px;
+  border-radius: 10%;
+}
+
+.dark a {
+  color: aqua
+}
+
+
 .btn-insert-highlights {
   filter: invert(0.95);
   width: 20px !important;
+  padding-right: 5px;
 }
+
+
+.dark .btn-insert-highlights {
+  filter: invert(0.2);
+}
+
 
 .btn-insert-highlights:hover {
   filter: invert(0.85);
@@ -58,6 +76,10 @@ body.dark {
 
 #btn-configure-readwise:hover {
   filter: invert(0.50);
+}
+
+body.dark {
+  color: silver;
 }
 
 body.dark .btn {

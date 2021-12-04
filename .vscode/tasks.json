@@ -4,10 +4,13 @@
 		{
 			"type": "npm",
 			"script": "build",
-			"group": "build",
 			"problemMatcher": [],
 			"label": "npm: build",
-			"detail": "webpack --mode=production"
+			"detail": "webpack --mode=production",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
 		}
 	]
 }

@@ -1,10 +1,10 @@
 {
   "id": "TfTHacker.craft42.readwise",
-  "name": "Readwise Highlight Importer Prototype",
+  "name": "Readwise Highlights",
   "fileName": "craft42-readwise",
   "author" : "@TfThacker",
   "author-email" : "@TfTHacker",
-  "description" : "This is a personal prototype developed by @TfTHacker and is not affliated with the Readwise company. Imports highilghts into current document from Readwise",
+  "description" : "This is a prototype (v1) developed by @TfTHacker and is not affliated with the Readwise company. This extension imports highilghts into current document from Readwise.",
   "api": "0.1.0",
   "main": "index.html"
 }
