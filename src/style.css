@@ -1,3 +1,4 @@
+
 body {
   display: flex;
   flex-direction: column;
@@ -28,12 +29,20 @@ body.dark {
   border-style:solid;
 }
 
+.dark #book-list {
+  border-color: darkslategray !important;
+}
+
 #book-list::-webkit-scrollbar {
   width: 8px;
 }
 
 #book-list::-webkit-scrollbar-track {
   background-color: darkcyan;
+}
+
+.dark #book-list::-webkit-scrollbar-track {
+  background-color: darkslategray;
 }
 
 #book-list::-webkit-scrollbar-thumb {
@@ -48,6 +57,10 @@ body.dark {
   border-color: lightblue;
   border-bottom-width:1px; 
   padding-top: 3px;
+}
+
+.dark .readwise-book-container {
+  border-color: darkslategray;
 }
 
 .book-images-wrapper {
@@ -82,42 +95,66 @@ body.dark {
   filter: invert(0.85);
 }
 
-.button-refresh-highlights {
+#btn-save-config, .button-refresh-highlights {
   background-color: lightblue;
   border: none;
   text-align: center;
   text-decoration: none;
-  display: none;
   font-size: 12px;
-  height: 25px;
-  width: 145px;
   border-radius: 6px;
   cursor: pointer;
+  height: 25px;
 }
 
-.button-refresh-highlights:hover {
+.button-refresh-highlights {
+  width: 145px;
+  display: none;
+}
+
+.dark #btn-save-config, .dark .button-refresh-highlights {
+  background-color: darkcyan;
+  color: white;
+}
+
+#btn-save-config:hover {
   background-color: rgb(202, 235, 247);
 }
 
-.dark .button-refresh-highlights {
-  background-color: darkcyan;
-}
-
-.dark .button-refresh-highlights:hover {
+.dark #btn-save-config:hover {
   background-color: rgb(34, 160, 160);
 }
 
-#gear-image {
-  height: 20px;
-  padding-top: 2px;
-  padding-left: 13px;
+.toolbar-lower {
+  visibility: hidden;
+}
+
+.button-toolbar-lower {
+  padding-left: 20px;
+}
+
+.button-toolbar-lower-image {
+  height: 25px;
+  position: relative;
+  top:-2px;
+  filter: invert(0.6);
   cursor: pointer;
+  padding-bottom: 0px;
+}
+
+.button-toolbar-lower-image:hover {
+  filter: invert(0.4);
+}
+
+#gear-image {
+  height: 22px;
+  padding-top: 2px;
 }
 
 #config-readwise-setings {
   display: none;
   margin-bottom: 20px;
 }
+
 
 #btn-configure-readwise {
   filter: invert(0.8);
@@ -127,7 +164,4 @@ body.dark {
   color: aqua
 }
 
-#btn-configure-readwise:hover {
-  filter: invert(0.50);
-}
 
