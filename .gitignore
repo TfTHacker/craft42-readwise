@@ -1,2 +1,12 @@
+# vscode
+.vscode 
+@updates.md
+
+# npm
 node_modules
+package-lock.json
+
+# build folder
 dist
+.vscode
+

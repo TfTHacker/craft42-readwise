@@ -1,5 +1,5 @@
 const path = require('path')
-const manifestJson = require('./manifest.json')
+const manifestJson = require('./src/manifest.json')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const InlineChunkHtmlPlugin = require('react-dev-utils/InlineChunkHtmlPlugin')
 const ZipPlugin = require('zip-webpack-plugin')
@@ -57,8 +57,8 @@ module.exports = (env, argv) => {
       isProd && new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/app/]),
       isProd && new CopyPlugin({
         patterns: [
-          { from: 'manifest.json' },
-          { from: 'icon.png' }
+          { from: './src/manifest.json' },
+          { from: './src/icon.png' }
         ],
       }),
       isProd && new ZipPlugin({
@@ -67,9 +67,8 @@ module.exports = (env, argv) => {
         include: [
           'app.js.LICENSE.txt',
           'index.html',
-          'manifest.json',
-          'icon.png',
-          'gear.png'
+          './src/manifest.json',
+          './src/icon.png'
         ]
       })
     ].filter(Boolean)
