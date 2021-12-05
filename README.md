@@ -1,19 +1,11 @@
 # Introduction
 A Craft X extension to import [Readwise](https://readwise.io/) highlights into [Craft](https://www.craft.do/).
 
-<a href="https://www.loom.com/share/5c601a6fe43c4b06a57d9f27a5dfb945">
-    <p>Quick overview of the Readwise Highlights Extension for Craft - Watch Video</p>
-    <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/5c601a6fe43c4b06a57d9f27a5dfb945-with-play.gif">
-  </a>
+[![Quick overview](https://cdn.loom.com/sessions/thumbnails/5c601a6fe43c4b06a57d9f27a5dfb945-with-play.gif)](https://www.loom.com/share/5c601a6fe43c4b06a57d9f27a5dfb945)
 
 # Installing the Extension into Craft
 
-<a href="https://www.loom.com/share/849a920a8cba4b199dd90a1718f8b025">
-    <p>Installing the Readwise Highlights Extension for Craft - Watch Video</p>
-    <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/849a920a8cba4b199dd90a1718f8b025-with-play.gif">
-  </a>
-
-
+[![Installation](https://cdn.loom.com/sessions/thumbnails/849a920a8cba4b199dd90a1718f8b025-with-play.gif)](https://www.loom.com/share/849a920a8cba4b199dd90a1718f8b025)
 
 ### Step by step
 To install this extension, first download it:
