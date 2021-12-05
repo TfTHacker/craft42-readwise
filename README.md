@@ -1,11 +1,11 @@
 # Introduction
 A Craft X extension to import [Readwise](https://readwise.io/) highlights into [Craft](https://www.craft.do/).
 
-[![Quick overview](https://cdn.loom.com/sessions/thumbnails/5c601a6fe43c4b06a57d9f27a5dfb945-with-play.gif)](https://www.loom.com/share/5c601a6fe43c4b06a57d9f27a5dfb945)
+[![Quick overview](https://github.com/TfTHacker/craft42-readwise/releases/download/resources/IntroVideo.gif)](https://www.loom.com/share/5c601a6fe43c4b06a57d9f27a5dfb945)
 
 # Installing the Extension into Craft
 
-[![Installation](https://cdn.loom.com/sessions/thumbnails/849a920a8cba4b199dd90a1718f8b025-with-play.gif)](https://www.loom.com/share/849a920a8cba4b199dd90a1718f8b025)
+[![Installation](https://github.com/TfTHacker/craft42-readwise/releases/download/resources/InstallVideo.gif)](https://www.loom.com/share/849a920a8cba4b199dd90a1718f8b025)
 
 ### Step by step
 To install this extension, first download it:
