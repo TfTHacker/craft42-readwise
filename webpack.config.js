@@ -67,8 +67,8 @@ module.exports = (env, argv) => {
         include: [
           'app.js.LICENSE.txt',
           'index.html',
-          './src/manifest.json',
-          './src/icon.png'
+          'manifest.json',
+          'icon.png'
         ]
       })
     ].filter(Boolean)
