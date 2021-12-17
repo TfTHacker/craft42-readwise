@@ -4,7 +4,7 @@
   "fileName": "craft42-readwise",
   "author" : "@TfThacker",
   "author-email" : "@TfTHacker",
-  "description" : "This is a prototype (v2) developed by @TfTHacker and is not affliated with the Readwise company. This extension imports highilghts into current document from Readwise.",
+  "description" : "This is a prototype (v3) developed by @TfTHacker and is not affliated with the Readwise company. This extension imports highilghts into current document from Readwise.",
   "api": "0.1.0",
   "main": "index.html"
 }

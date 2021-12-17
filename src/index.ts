@@ -128,6 +128,10 @@ const insertHighlights = async (bookId : string) => {
   if(bookInfo.title) 
     output.push( { type: "textBlock",  content: bookInfo.title, style: { textStyle: "title"} } );
 
+  console.log(bookInfo)
+  if(bookInfo.cover_image_url) 
+    output.push( { type: "imageBlock",  url: bookInfo.cover_image_url } );
+
   if(bookInfo.author) 
     output.push( { type: "textBlock",  content: [ { text: "Author:", isBold: true}, {text: " " + bookInfo.author}]} );
 
@@ -150,6 +154,7 @@ const insertHighlights = async (bookId : string) => {
   output.push( { type: "textBlock",  content: [{ text: `Highlights (${bookInfo.num_highlights})`, isBold: true}],  listStyle: { type: "toggle"} } );
 
   const bulletStyle = craft.blockFactory.defaultListStyle("bullet");
+  console.log(highlights.results);
   const allHighlights = highlights.results.forEach( (highlight:any) => {
     output.push( 
       craft.blockFactory.textBlock({
