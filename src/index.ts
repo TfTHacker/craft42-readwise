@@ -149,13 +149,13 @@ const insertHighlights = async (bookId : string) => {
   output.push( { type: "textBlock",  content: [ { text: "Import Date:", isBold: true}, {text: " " + (new Date()).toLocaleDateString() + " " + (new Date()).toLocaleTimeString() }]} );
 
   if(bookInfo.last_highlight_at && bookInfo.last_highlight_at != "")
-    output.push( { type: "textBlock",  content: [ { text: "Last Highlight Date:", isBold: true}, {text: " " + (new Date()).toLocaleDateString() + " " + (new Date(bookInfo.last_highlight_at)).toLocaleTimeString() }]} );
+    output.push( { type: "textBlock",  content: [ { text: "Last Highlight Date:", isBold: true}, {text: " " + (new Date(bookInfo.last_highlight_at)).toLocaleDateString() + " " + (new Date(bookInfo.last_highlight_at)).toLocaleTimeString() }]} );
 
   output.push( { type: "textBlock",  content: [{ text: `Highlights (${bookInfo.num_highlights})`, isBold: true}],  listStyle: { type: "toggle"} } );
 
   const bulletStyle = craft.blockFactory.defaultListStyle("bullet");
   console.log(highlights.results);
-  const allHighlights = highlights.results.forEach( (highlight:any) => {
+  const allHighlights = highlights.results.reverse().forEach( (highlight:any) => {
     output.push( 
       craft.blockFactory.textBlock({
         listStyle: bulletStyle,
