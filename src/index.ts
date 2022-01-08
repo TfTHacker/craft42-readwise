@@ -151,11 +151,23 @@ const insertHighlights = async (bookId : string) => {
   if(bookInfo.last_highlight_at && bookInfo.last_highlight_at != "")
     output.push( { type: "textBlock",  content: [ { text: "Last Highlight Date:", isBold: true}, {text: " " + (new Date(bookInfo.last_highlight_at)).toLocaleDateString() + " " + (new Date(bookInfo.last_highlight_at)).toLocaleTimeString() }]} );
 
-  output.push( { type: "textBlock",  content: [{ text: `Highlights (${bookInfo.num_highlights})`, isBold: true}],  listStyle: { type: "toggle"} } );
+  output.push( { type: "textBlock",  content: [{ text: `Total Highlights: `, isBold: true}, { text: `${bookInfo.num_highlights}`}]} );
 
   const bulletStyle = craft.blockFactory.defaultListStyle("bullet");
-  console.log(highlights.results);
+  let lastGroupDate: string;
   const allHighlights = highlights.results.reverse().forEach( (highlight:any) => {
+    const highlightDate: Date = new Date(highlight.highlighted_at);
+    if(lastGroupDate!==getFormattedDate(highlightDate)) {
+      lastGroupDate = getFormattedDate(highlightDate);
+      output.push( { type: "textBlock",
+      content: [
+          { 
+            text: getFormattedDate(highlightDate),
+            link: {type:"dateLink", date: getFormattedDate(highlightDate) }
+          }
+       ]} 
+      );
+    }
     output.push( 
       craft.blockFactory.textBlock({
         listStyle: bulletStyle,
@@ -175,6 +187,7 @@ const insertHighlights = async (bookId : string) => {
       output.push( craft.blockFactory.textBlock({ listStyle: bulletStyle, indentationLevel: 2, content: [{text: `Tags: ${tags}`}] }) );
     }
   });
+  console.log(output);
   craft.dataApi.addBlocks( output );
 }
 
@@ -214,3 +227,12 @@ craft.env.setListener((env) => {
             break;
     }
 })
+
+// Function borrowed from our good friends at: https://github.com/deadlyhifi/craft-x-insert-date
+function getFormattedDate(date: Date | null = null) {
+  const selectedDate = date ? date : new Date();
+  return `${selectedDate.getFullYear()}-${(
+    "0" +
+    (selectedDate.getMonth() + 1)
+  ).slice(-2)}-${("0" + selectedDate.getDate()).slice(-2)}`;
+}
