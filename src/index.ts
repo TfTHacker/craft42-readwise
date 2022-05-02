@@ -74,7 +74,7 @@ const toggleSettingsOnOff = async ()=> {
   if(divSettingsWrapper.style.display==="") {
     divBookList.innerHTML = "";
     divBookList.style.height="500px";
-    divToolbarLower.style.display="block";
+    divToolbarLower.style.display="flex";
     await listBooks();
   }  else {
     divToolbarLower.style.display="none";
@@ -197,7 +197,7 @@ const listBooks = async () => {
   lastBookListQuery = await readwiseGetBookList(<string>rwToken.data)
   let output = "";
   if(lastBookListQuery===null) {
-    divBookList.innerHTML="Information could not be retrieved from Readwise. Please verify the Readwise Access Token."
+    divBookList.innerHTML="<div class=\"loading-error\">Information could not be retrieved from Readwise. Please verify the Readwise Access Token.</div>"
     return;
   }
   lastBookListQuery.forEach((e : any) => {

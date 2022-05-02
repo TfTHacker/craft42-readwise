@@ -17,8 +17,9 @@ body.dark {
   display: flex;
   font-size: 15pt;
   font-weight: bold;
-  height: 44px;
+  height: 40px;
   margin: 0;
+  padding: 0;
   text-align: center;
   width: 100%;
 }
@@ -54,13 +55,12 @@ body.dark {
 }
 
 .readwise-book-container {
-  padding-bottom: 4px;
+  padding: 4px;
   width: 250px;
   display: flex;
   border-bottom-style: inset;
   border-color: lightblue;
   border-bottom-width: 1px;
-  padding-top: 3px;
 }
 
 .dark .readwise-book-container {
@@ -72,8 +72,7 @@ body.dark {
 }
 
 .book-images {
-  width: 45px;
-  margin-left: 5px;
+  width: 50px;
   border-radius: 10%;
 }
 
@@ -91,17 +90,18 @@ body.dark {
   background-color: transparent;
   border: none;
   float: right;
-  height: 28px;
-  margin: 0 4px;
+  height: 24px;
+  margin-left: 4px;
   outline: none;
-  padding: 4px;
+  padding: 0;
   position: relative;
   width: 28px;
 }
 
 .btn-insert-highlights img {
   filter: invert(0.95);
-  width: 20px !important;
+  padding-right: 4px;
+  width: 24px !important;
 }
 
 .dark .btn-insert-highlights img {
@@ -167,8 +167,10 @@ body.dark {
   background-color: rgb(34, 160, 160);
 }
 
-.toolbar-lower {
-  display: none;
+#toolbar-lower {
+  display: flex;
+  margin-top: 10px;
+  padding-bottom: 10px;
 }
 
 .button-toolbar-lower {
@@ -212,5 +214,9 @@ body.dark {
 
 .loading-message {
   font-style: italic;
+  padding: 50px 20px;
+}
+
+.loading-error {
   padding: 50px 20px;
 }
