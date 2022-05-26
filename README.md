@@ -1,3 +1,8 @@
+# Update from 2022-05-26
+Since Craft has slowed down or reoriented themselves with their API, I have decided for now to archive this plugin. It is still working, but I will continue development on it because of the lack of API progress. If someone is interested in taking over this repository, please let me know.
+
+
+
 # Introduction
 A Craft X extension to import [Readwise](https://readwise.io/) highlights into [Craft](https://www.craft.do/).
 
