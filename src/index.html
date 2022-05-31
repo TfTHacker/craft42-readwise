@@ -6,29 +6,31 @@
 </head>
 
 <body>
-  <div class="extension-header">Readwise Highlights</div>
-  <div id="book-list"></div>
-  <div style="display:flex; margin-top: 10px;" id="toolbar-lower">
-    <span id="btn-random-highlight" class="button-toolbar-lower">
+  <h1 class="extension-header">Readwise Highlights</h1>
+  <main id="book-list"></main>
+  <nav id="toolbar-lower">
+    <button type="button" id="btn-random-highlight" class="button-toolbar-lower">
       <img id="snooker-image" class="button-toolbar-lower-image" title="Get a random highlight"
         src="https://github.com/TfTHacker/craft42-readwise/releases/download/resources/snooker.png">
-    </span> 
-    <span id="btn-refresh-highlights" class="button-toolbar-lower">
+    </button>
+    <button type="button" id="btn-refresh-highlights" class="button-toolbar-lower">
       <img id="refresh-image" class="button-toolbar-lower-image" title="Refresh Highlights"
         src="https://github.com/TfTHacker/craft42-readwise/releases/download/resources/refresh.png">
-    </span> 
-    <span id="btn-configure-readwise" class="button-toolbar-lower">
+    </button>
+    <button type="button" id="btn-configure-readwise" class="button-toolbar-lower">
       <img id="gear-image" class="button-toolbar-lower-image" title="Configure Readwise Token"
         src="https://readwise-assets.s3.amazonaws.com/static/images/new_icons/account.5b1e4a8f6875.svg">
-    </span>
-  </div>
-  <div id="config-readwise-setings">
-    <div><br>Readwise Access Token:</div>
-    <input style="width:200px" id="readwise-api-key" type="text">
-    <span><button id="btn-save-config">Go</button></span>
+    </button>
+  </nav>
+  <section id="config-readwise-setings">
+    <h2 class="settings-header">Readwise Access Token:</h2>
+    <div class="api-form">
+      <input id="readwise-api-key" type="text">
+      <button id="btn-save-config">Go</button>
+    </div>
     <div>You can get your Readwise access token at this address <a href="" onclick="craft.editorApi.openURL('https://readwise.io/access_token'); return false">https://readwise.io/access_token</a>. <p></p>On that page copy your token and paste it into the field above. Then click the go button to go to the primary view of this extension.</div>
     <div><p></p>This prototype is brought <br>to you by <a href="" onclick="craft.editorApi.openURL('https://twitter.com/TfTHacker'); return false">@TfTHacker</a></div>
-  </div>
+  </section>
 </body>
 
 </html>

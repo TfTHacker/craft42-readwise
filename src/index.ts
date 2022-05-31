@@ -49,7 +49,7 @@ const initializeUI = async ()=> {
   });
 
   btnSaveConfig.addEventListener("click", async ()=> await toggleSettingsOnOff());
-  
+
   btnConfigureReadwise.addEventListener("click", async ()=> await toggleSettingsOnOff());
 
   // initialize UI
@@ -59,7 +59,7 @@ const initializeUI = async ()=> {
       btnRefreshHighlightList.style.display = "inline";
       await listBooks();
   } else {
-    divToolbarLower.style.visibility="hidden";
+    divToolbarLower.style.display="none";
     divSettingsWrapper.style.display = "inline";
     divBookList.style.height="0px";
   }
@@ -74,10 +74,10 @@ const toggleSettingsOnOff = async ()=> {
   if(divSettingsWrapper.style.display==="") {
     divBookList.innerHTML = "";
     divBookList.style.height="500px";
-    divToolbarLower.style.visibility="visible";
+    divToolbarLower.style.display="flex";
     await listBooks();
   }  else {
-    divToolbarLower.style.visibility="hidden";
+    divToolbarLower.style.display="none";
   }
   if(inputReadwiseApiToken.value.trim()!="") btnRefreshHighlightList.style.display="inline";
 }
@@ -86,7 +86,7 @@ const toggleSettingsOnOff = async ()=> {
  * Message displayed in the book list area while loading books
  */
 const pleaseWaitLoadingHighlights = ()=>{
-  divBookList.innerHTML=`<div style="padding:20px;padding-top:50px">Please wait, loading highlights ...</div>`;
+  divBookList.innerHTML=`<div class="loading-message">Please wait, loading highlights...</div>`;
 }
 
 /**
@@ -102,8 +102,8 @@ const insertRandomHighlight = async ()=>  {
     content: [
       { text: highlight.text },
       { text: " - " },
-      { text: bookInfo.title, isItalic:true, link: { 
-        type: "url", 
+      { text: bookInfo.title, isItalic:true, link: {
+        type: "url",
         url: (highlight.url != null ? highlight.url : (bookInfo.source_url!=null ? bookInfo.source_url : `https://readwise.io/open/${highlight.id}`) )
       }},
       { text:  " by " + bookInfo.author + "", isItalic:true},
@@ -114,35 +114,35 @@ const insertRandomHighlight = async ()=>  {
 }
 
 /**
- * 
+ *
  * Grabs all highlights for a book  and inserts them into Craft
- * 
+ *
  * @param bookId ID of the document to retrieve highlights for
- * 
+ *
  */
 const insertHighlights = async (bookId : string) => {
   const rwToken = await craft.storageApi.get("readwiseToken");
   const highlights =  await readwiseGetHighlightsByBookID(<string> rwToken.data, bookId);
   const bookInfo = lastBookListQuery.find((b:any)=> b.id.toString() === bookId );
   let output: CraftBlockInsert[] = [];
-  if(bookInfo.title) 
+  if(bookInfo.title)
     output.push( { type: "textBlock",  content: bookInfo.title, style: { textStyle: "title"} } );
 
   console.log(bookInfo)
-  if(bookInfo.cover_image_url) 
+  if(bookInfo.cover_image_url)
     output.push( { type: "imageBlock",  url: bookInfo.cover_image_url } );
 
-  if(bookInfo.author) 
+  if(bookInfo.author)
     output.push( { type: "textBlock",  content: [ { text: "Author:", isBold: true}, {text: " " + bookInfo.author}]} );
 
-  if(bookInfo.category) 
+  if(bookInfo.category)
     output.push( { type: "textBlock",  content: [ { text: "Category:", isBold: true}, {text: " " + bookInfo.category}]} );
 
-  if(bookInfo.source_url) 
-    output.push( { type: "textBlock",  content: [ { text: "Source: ", isBold: true}, 
+  if(bookInfo.source_url)
+    output.push( { type: "textBlock",  content: [ { text: "Source: ", isBold: true},
                  { text: bookInfo.source_url,  link: {type: "url", url: bookInfo.source_url} }] });
 
-  if(bookInfo.tags.length>0) {    
+  if(bookInfo.tags.length>0) {
     const tags = bookInfo.tags.map((t:any)=> "#" + t.name).join(" ");
     output.push( { type: "textBlock", content: [ { text: "Tags:", isBold: true}, {text: " " + tags}]} );
   }
@@ -161,14 +161,14 @@ const insertHighlights = async (bookId : string) => {
       lastGroupDate = getFormattedDate(highlightDate);
       output.push( { type: "textBlock",
       content: [
-          { 
+          {
             text: getFormattedDate(highlightDate),
             link: {type:"dateLink", date: getFormattedDate(highlightDate) }
           }
-       ]} 
+       ]}
       );
     }
-    output.push( 
+    output.push(
       craft.blockFactory.textBlock({
         listStyle: bulletStyle,
         indentationLevel: 1,
@@ -180,9 +180,9 @@ const insertHighlights = async (bookId : string) => {
         ]
       })
     );
-    if(highlight.note!="") 
+    if(highlight.note!="")
       output.push( craft.blockFactory.textBlock({ listStyle: bulletStyle, indentationLevel: 2, content: [{text: `Notes: ${highlight.note}`}] }) );
-    if(highlight.tags.length>0) { 
+    if(highlight.tags.length>0) {
       const tags = highlight.tags.map((t:any)=> "#" + t.name).join(" ");
       output.push( craft.blockFactory.textBlock({ listStyle: bulletStyle, indentationLevel: 2, content: [{text: `Tags: ${tags}`}] }) );
     }
@@ -197,19 +197,23 @@ const listBooks = async () => {
   lastBookListQuery = await readwiseGetBookList(<string>rwToken.data)
   let output = "";
   if(lastBookListQuery===null) {
-    divBookList.innerHTML="Information could not be retrieved from Readwise. Please verify the Readwise Access Token."
+    divBookList.innerHTML="<div class=\"loading-error\">Information could not be retrieved from Readwise. Please verify the Readwise Access Token.</div>"
     return;
   }
   lastBookListQuery.forEach((e : any) => {
     if(e.num_highlights===0) return;
     output += `<div class="readwise-book-container">
-            <span class="book-images-wrapper"><img class="book-images" src="${e.cover_image_url}"></span>
-              <span class="book-info">
-                <div>${e.title} (${e.num_highlights})</div>
-                <div>${e.author}</div>
-              </span>
-              <span><img class="btn-insert-highlights" id="${e.id}" src="https://readwise-assets.s3.amazonaws.com/static/images/new_icons/import.30df72e7b737.svg"></span>                 
-            </div>`;
+            <div class="book-images-wrapper">
+              <img class="book-images" src="${e.cover_image_url}">
+            </div>
+            <div class="book-info">
+              <div class="book-info-title">${e.title} (${e.num_highlights})</div>
+              <div class="book-info-author">${e.author}</div>
+            </div>
+            <button type="button" class="btn-insert-highlights" id="${e.id}">
+              <img src="https://readwise-assets.s3.amazonaws.com/static/images/new_icons/import.30df72e7b737.svg">
+            </button>
+          </div>`;
   });
   divBookList.innerHTML = output;
   document.querySelectorAll(".btn-insert-highlights").forEach(async (i) => {

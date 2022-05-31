@@ -1,8 +1,8 @@
-
 body {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   overflow-y: hidden;
 }
 
@@ -12,21 +12,26 @@ body.dark {
 }
 
 .extension-header {
-  padding-top: 15px;
-  padding-bottom: 10px;
-  font-size: 16pt;
-  font-weight: bold;
+  align-items: center;
   color: darkcyan;
+  display: flex;
+  font-size: 15pt;
+  font-weight: bold;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  width: 100%;
 }
 
 #book-list {
-  overflow-x:hidden; 
-  overflow-y:auto;
-  width:255px; 
-  height:500px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 255px;
+  height: 500px;
   border-color: darkcyan !important;
   border-width: 1px;
-  border-style:solid;
+  border-style: solid;
 }
 
 .dark #book-list {
@@ -50,13 +55,12 @@ body.dark {
 }
 
 .readwise-book-container {
-  padding-bottom:4px; 
-  width:250px; 
-  display: flex; 
-  border-bottom-style: inset; 
+  padding: 4px;
+  width: 250px;
+  display: flex;
+  border-bottom-style: inset;
   border-color: lightblue;
-  border-bottom-width:1px; 
-  padding-top: 3px;
+  border-bottom-width: 1px;
 }
 
 .dark .readwise-book-container {
@@ -68,30 +72,44 @@ body.dark {
 }
 
 .book-images {
-  width: 45px;
-  margin-left: 5px;
+  width: 50px;
   border-radius: 10%;
 }
 
 .book-info {
-  padding-left:5px;
+  font-size: 13px;
+  padding-left: 5px;
   width: 100%;
 }
 
-.btn-insert-highlights {
-  filter: invert(0.95);
-  width: 20px !important;
-  padding-right: 4px;
-  position: relative;
-  float: right;
+.book-info-author {
+  font-style: italic;
 }
 
-.dark .btn-insert-highlights {
+.btn-insert-highlights {
+  background-color: transparent;
+  border: none;
+  float: right;
+  height: 24px;
+  margin-left: 4px;
+  outline: none;
+  padding: 0;
+  position: relative;
+  width: 28px;
+}
+
+.btn-insert-highlights img {
+  filter: invert(0.95);
+  padding-right: 4px;
+  width: 24px !important;
+}
+
+.dark .btn-insert-highlights img {
   filter: invert(0.2);
 }
 
 
-.btn-insert-highlights:hover {
+.btn-insert-highlights img:hover {
   filter: invert(0.85);
 }
 
@@ -116,6 +134,31 @@ body.dark {
   color: white;
 }
 
+.settings-header {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 12px auto;
+  padding: 0;
+}
+
+.api-form {
+  align-items: center;
+  display: flex;
+  flex-flow: row nowrap;
+  margin-bottom: 12px;
+}
+
+#readwise-api-key {
+  font-size: 13px;
+  flex: 1 1 auto;
+  padding: 2px 4px;
+}
+
+#btn-save-config {
+  flex: 0 0 25px;
+  margin-left: 4px;
+}
+
 #btn-save-config:hover {
   background-color: rgb(202, 235, 247);
 }
@@ -124,18 +167,23 @@ body.dark {
   background-color: rgb(34, 160, 160);
 }
 
-.toolbar-lower {
-  visibility: hidden;
+#toolbar-lower {
+  display: flex;
+  margin-top: 10px;
+  padding-bottom: 10px;
 }
 
 .button-toolbar-lower {
-  padding-left: 20px;
+  background-color: transparent;
+  border: none;
+  padding: 5px 10px;
+  outline: none;
 }
 
 .button-toolbar-lower-image {
   height: 25px;
   position: relative;
-  top:-2px;
+  top: -2px;
   filter: invert(0.6);
   cursor: pointer;
   padding-bottom: 0px;
@@ -164,4 +212,11 @@ body.dark {
   color: aqua
 }
 
+.loading-message {
+  font-style: italic;
+  padding: 50px 20px;
+}
 
+.loading-error {
+  padding: 50px 20px;
+}
